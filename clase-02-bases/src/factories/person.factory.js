@@ -1,12 +1,14 @@
-function makePerson ({ uuidv4, getAge })  {
-    return function createPerson(name, birthdate) {
-        return {
-            id: uuidv4(),
-            name,
-            age: getAge(birthdate)
-        };
-    };
-};
+import {generateId} from "../adapters/id.adapter.js"
+import {calculateAge} from "../adapters/age.adapter.js"
 
 
-export default makePerson;
+export const createPerson = (name, birthdate) => ({
+    id: generateId(),
+    name,
+    birthdate,
+    age: calculateAge(birthdate),
+});
+
+export default createPerson;
+
+
