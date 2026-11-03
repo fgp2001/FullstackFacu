@@ -1,10 +1,12 @@
-import { v4 as uuidv4 } from "uuid";
-import getAge from "get-age";
+function makePerson ({ uuidv4, getAge })  {
+    return function createPerson(name, birthdate) {
+        return {
+            id: uuidv4(),
+            name,
+            age: getAge(birthdate)
+        };
+    };
+};
 
 
-export const createPerson = (name, birthdate) => ({
-    id: uuidv4(),
-    name,
-    birthdate,
-    age: getAge(birthdate),
-});
+export default makePerson;

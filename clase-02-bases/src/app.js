@@ -8,8 +8,11 @@
 //Al utilizar ECM - Modules:
 //import { CURRENT_DATE } from "./utils/constants.js";
 //console.log(CURRENT_DATE)
+import { v4 as uuidv4 } from "uuid";
+import getAge from "get-age";
+import makePerson from "./factories/person.factory.js";
 
-import { createPerson } from "./factories/person.factory.js";
+const createPerson = makePerson({ uuidv4, getAge });
 
 const people = [
   createPerson("John Doe", "2000-05-15"),
@@ -17,5 +20,5 @@ const people = [
   createPerson("Carlos Pérez", "1988-03-20"),
 ];
 
-console.log(people)
+console.log(people);
 
