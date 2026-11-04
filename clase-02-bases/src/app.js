@@ -1,20 +1,17 @@
-//console.log("My first Node.js app");
+import { buildPeopleReport } from "./services/person.service.js";
 
-// Al utilizar CommonJS:
 
-//const CURRENT_DATE = require('./utils/constants');
-//console.log(CURRENT_DATE)
+const main = async () => {
+  try {
+    const report = await buildPeopleReport();
 
-//Al utilizar ECM - Modules:
-//import { CURRENT_DATE } from "./utils/constants.js";
-//console.log(CURRENT_DATE)
+    console.log(report);
+  } catch (error) {
+    console.log(error.message)
+  } finally {
+    console.log("Process finished");
+  }
+};
 
-import {createPerson} from "./factories/person.factory.js";
-const people = [
-  createPerson("John Doe", "2000-05-15"),
-  createPerson("Facundo Pereira", "2001-01-15"),
-  createPerson("Carlos Pérez", "1988-03-20"),
-];
 
-console.log(people);
-
+main();
