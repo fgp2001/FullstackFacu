@@ -1,7 +1,10 @@
 import fetchAdapter from "./adapters/http/fetch.adapter.js"
+import axiosAdapter from "./adapters/http/axios.adapter.js"
 import createUserService from "./services/user.service.js";
+import fakeAdapter from "./adapters/http/fake.adapter.js"
 
-const userService = createUserService(fetchAdapter);
+
+const userService = createUserService(axiosAdapter);
 
 const runOperation = async (label, operation) => {
     try {
@@ -22,7 +25,7 @@ const main = async () => {
     await runOperation("updateUser", () => userService.updateUser(2, {name: "John Doe", job:"Engineer"}));
     await runOperation("patchUser", () => userService.patchUser(2, {job: "Manager"}));
     await runOperation("deleteUser", () => userService.deleteUser(2));
-    //await runOperation("notFound", () => userService.getUserById(9999));
+    //Caso de prueba de un Not Found: await runOperation("notFound", () => userService.getUserById(9999));
 }
 
 main();
