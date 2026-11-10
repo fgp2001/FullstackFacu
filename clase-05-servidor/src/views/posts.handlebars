@@ -1,0 +1,8 @@
+<h2>{{title}}</h2>
+
+{{#each posts as |post index|}}
+    <p>{{index}}</p>
+    {{> post-card post=post}}
+{{else}}
+    <p>No hay posts.</p>
+{{/each}}

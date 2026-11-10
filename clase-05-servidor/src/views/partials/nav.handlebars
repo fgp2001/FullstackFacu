@@ -1,0 +1,11 @@
+<nav>
+    <ul>
+        {{#each nav}}
+        <li>
+            <a href="{{href}}" class="{{#if (eq id @root.section)}}active{{/if}}">
+                {{label}}
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+</nav>

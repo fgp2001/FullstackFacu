@@ -1,0 +1,9 @@
+<h2>{{title}}</h2>
+
+{{#if posts.length}}
+    {{#each posts}}
+        {{> post-card post=this}}
+    {{/each}}
+{{else}}
+    <p>Todavia no hay posts publicados</p>
+{{/if}}

@@ -1,0 +1,50 @@
+body {
+    font-family: system-ui, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    line-height: 1.6;
+}
+
+.site-header {
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+nav ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555;
+}
+
+nav a.active {
+    color: #0a58ca;
+    font-weight: bold;
+}
+
+.box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid #0a58ca;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.site-footer {
+    border-top: 2px solid #ddd;
+    margin-top: 2rem;
+    color: #777;
+}
