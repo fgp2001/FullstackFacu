@@ -1,4 +1,5 @@
 import Server from "./server.js";
 
 const server = new Server();
-server.start();
+await server.start();
+console.log(`Server is running on port ${server.port}`);
