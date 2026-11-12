@@ -2,10 +2,9 @@
   "name": "clase-06-api-rest",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
   "scripts": {
-    "dev": "node --watch src/app.js",
-    "start": "node src/app.js"
+    "dev": "node --watch src/main.js",
+    "start": "node src/main.js"
   },
   "keywords": [],
   "author": "",

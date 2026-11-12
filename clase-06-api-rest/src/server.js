@@ -151,6 +151,10 @@ class Server {
             res.status(204).send();
         })
 
+        this.#app.get("/api/health", (req, res) => {
+            res.json({ status: "ok", uptime: process.uptime() });
+        });
+
     }
 
     #registerErrorHandlers() {
@@ -185,9 +189,10 @@ class Server {
     }
 
     #middleware() {
+        this.#app.use(cors({ origin: "http://localhost:5173" }));
         this.#app.use(express.json());
-        this.#app.use(cors());
     }
+
 
     start() {
         this.#app.listen(this.#port, () => {
