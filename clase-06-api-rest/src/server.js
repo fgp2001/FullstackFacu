@@ -66,7 +66,7 @@ class Server {
     #users = [];
 
     constructor({
-        port = process.env.PORT || 3000,
+        port = process.env.PORT ?? 3000,
         bcryptRounds = 10,
         rateLimit: rateLimitOptions = {},
     } = {}) {
@@ -74,17 +74,17 @@ class Server {
         this.#port = Number(port);
         this.#bcryptRounds = bcryptRounds;
         this.#users = [
-            {
+            {   
                 id: 1,
                 name: "John Doe",
                 email: "john.doe@example.com",
-                password: bcrypt.hashSync("john-secret-123", bcryptRounds),
+                passwordHash: bcrypt.hashSync("john-secret-123", bcryptRounds),
             },
             {
                 id: 2,
                 name: "Jane Smith",
                 email: "jane.smith@example.com",
-                password: bcrypt.hashSync("jane-secret-456", bcryptRounds),
+                passwordHash: bcrypt.hashSync("jane-secret-456", bcryptRounds),
             },
         ];
 
@@ -207,7 +207,7 @@ class Server {
 
             this.#assertEmailAvailable(email);
 
-            const user = { id: this.#nextId, name, email, passwordHash };
+            const user = { id: this.#nextId++, name, email, passwordHash };
 
             this.#users.push(user);
             res.status(201).location(`/api/users/${user.id}`).json({ data: toPublicUser(user) });
@@ -222,7 +222,7 @@ class Server {
 
             user.name = name;
             user.email = email;
-            user.password = passwordHash;
+            user.passwordHash = passwordHash;
 
             res.json({ data: toPublicUser(user) });
         });
@@ -302,7 +302,7 @@ class Server {
             if (!this.#httpServer) return resolve();
 
             this.#httpServer.close((error) => (error ? reject(error) : resolve()));
-            this.#httpServer.closeAllConections?.();
+            this.#httpServer.closeAllConnections?.();
             this.#httpServer = null;
         });
     }

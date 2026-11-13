@@ -76,6 +76,14 @@ describe("POST /api/users", () => {
         expect(Array.isArray(res.body.error.details)).toBe(true);
         expect(JSON.stringify(res.body)).not.toContain("123");
     });
+
+    it("asigna ids distintos a usuarios consecutivos", async () => {
+        const first = await api.post("/api/users").send(validUser);
+        const second = await api.post("/api/users").send({ ...validUser, email: "otro@example.com" });
+
+        expect(first.body.data.id).toBe(3);
+        expect(second.body.data.id).toBe(4);
+    });
 });
 
 describe("GET /api/users", () => {
